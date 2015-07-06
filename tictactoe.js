@@ -1,89 +1,98 @@
-var arr = [[null,null,null],
-			[null,null,null],
-			[null,null,null]];
+var array= ["0-0","0-1","0-2","1-0","1-1","1-2","2-0","2-1","2-2"];
 
-function getInputRow() {
-    console.log("Please choose a row")
-    return prompt();
+function addX(str) {
+	document.getElementById(str).innerHTML = "X";
 }
 
-function getInputCol() {
-    console.log("Please choose a col")
-    return prompt();
+function addO(str) {
+	document.getElementById(str).innerHTML = "O";
 }
 
-function addX(row,col) {
-	if (arr[row][col] !== null) {
-		addX(getInput(),getInput());
+function runThrough(str) {
+	if(checker()) {
+		document.getElementById("end-game").innerHTML = "Game Over";
 	}
-	else {arr[row][col] = "X";}
-}
-
-function addO(row,col) {
-	if (arr[row][col] === null) {
-		arr[row][col] = "O";
+	else {
+		if(document.getElementById(str).innerHTML == "O" || document.getElementById(str).innerHTML == "X") {
+			runThrough(array[prompt()]);
+		}
+		else {
+			addX(str);
+			if(checker()) {
+				document.getElementById("end-game").innerHTML = "Game Over";
+			}
+			else {
+				var x = Math.round(Math.random()*8);
+				var y = array[x];
+				while(document.getElementById(y).innerHTML == "O" || document.getElementById(y).innerHTML == "X") {
+					x = Math.round(Math.random()*8);
+					y = array[x];
+				}
+				addO(y);
+			}
+		}
 	}
-	else {addO(getInput(),getInput());}
-	
 }
 
 function checker() {
-	if(arr[0][0] == "X" && arr[0][1] == "X" && arr[0][2] == "X") {
+	if(returnValue(array[0]) == "X" && returnValue(array[1]) == "X" && returnValue(array[2]) == "X") {
 		return true;
 	}
-	else if(arr[1][0] == "X" && arr[1][1] == "X" && arr[1][2] == "X") {
+	else if(returnValue(array[0]) == "O" && returnValue(array[1]) == "O" && returnValue(array[2]) == "O") {
 		return true;
 	}
-	else if(arr[2][0] == "X" && arr[2][1] == "X" && arr[2][2] == "X") {
+	else if(returnValue(array[3]) == "O" && returnValue(array[4]) == "O" && returnValue(array[5]) == "O") {
 		return true;
 	}
-	else if(arr[1][0] == "O" && arr[1][1] == "O" && arr[1][2] == "O") {
+	else if(returnValue(array[3]) == "X" && returnValue(array[4]) == "X" && returnValue(array[5]) == "X") {
 		return true;
 	}
-	else if(arr[2][0] == "O" && arr[2][1] == "O" && arr[2][2] == "O") {
+	else if(returnValue(array[6]) == "O" && returnValue(array[7]) == "O" && returnValue(array[8]) == "O") {
 		return true;
 	}
-	else if(arr[0][0] == "O" && arr[0][1] == "O" && arr[0][2] == "O") {
+	else if(returnValue(array[6]) == "X" && returnValue(array[7]) == "X" && returnValue(array[8]) == "X") {
 		return true;
 	}
-	else if(arr[0][0] == "X" && arr[1][0] == "X" && arr[2][0] == "X") {
+	else if(returnValue(array[0]) == "O" && returnValue(array[3]) == "O" && returnValue(array[6]) == "O") {
 		return true;
 	}
-	else if(arr[0][1] == "X" && arr[1][1] == "X" && arr[2][1] == "X") {
+	else if(returnValue(array[0]) == "X" && returnValue(array[3]) == "X" && returnValue(array[6]) == "X") {
 		return true;
 	}
-	else if(arr[0][2] == "X" && arr[1][2] == "X" && arr[2][2] == "X") {
+	else if(returnValue(array[1]) == "O" && returnValue(array[4]) == "O" && returnValue(array[7]) == "O") {
 		return true;
 	}
-	else if(arr[0][0] == "O" && arr[1][0] == "O" && arr[2][0] == "O") {
+	else if(returnValue(array[1]) == "X" && returnValue(array[4]) == "X" && returnValue(array[7]) == "X") {
 		return true;
 	}
-	else if(arr[0][1] == "O" && arr[1][1] == "O" && arr[2][1] == "O") {
+	else if(returnValue(array[2]) == "O" && returnValue(array[5]) == "O" && returnValue(array[8]) == "O") {
 		return true;
 	}
-	else if(arr[0][2] == "O" && arr[1][2] == "O" && arr[2][2] == "O") {
+	else if(returnValue(array[2]) == "X" && returnValue(array[5]) == "X" && returnValue(array[8]) == "X") {
 		return true;
 	}
-	else if(arr[0][0] == "0" && arr[1][1] == "O" && arr[2][2] == "O") {
+	else if(returnValue(array[0]) == "O" && returnValue(array[4]) == "O" && returnValue(array[8]) == "O") {
 		return true;
 	}
-	else if(arr[2][0] == "O" && arr[1][1] == "O" && arr[0][2] == "O") {
+	else if(returnValue(array[0]) == "X" && returnValue(array[4]) == "X" && returnValue(array[8]) == "X") {
 		return true;
 	}
-	else if(arr[0][0] == "X" && arr[1][1] == "X" && arr[2][2] == "X") {
+	else if(returnValue(array[6]) == "O" && returnValue(array[4]) == "O" && returnValue(array[2]) == "O") {
 		return true;
 	}
-	else if(arr[2][0] == "X" && arr[1][1] == "X" && arr[0][2] == "X") {
+	else if(returnValue(array[6]) == "X" && returnValue(array[4]) == "X" && returnValue(array[2]) == "X") {
 		return true;
 	}
 	else {return false;}
 }
 
-function play() {
-	while(checker()===false) {
-		console.log(arr);
-		addX(getInputRow(),getInputCol());
-		console.log(arr);
-		addO(getInputRow(),getInputCol());
+function returnValue(str) {
+	return document.getElementById(str).innerHTML;
+}
+
+function res() {
+	for(var i=0;i<array.length;i++) {
+		document.getElementById(array[i]).innerHTML = "";
 	}
+	document.getElementById("end-game").innerHTML = "";
 }

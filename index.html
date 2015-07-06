@@ -9,27 +9,52 @@
 	<div class="wrapper">
 		<div class="row">
 		<div class="col-md-6 main">
+			<h1>Score</h1>
 			<table class="table table-bordered" id="myTable">
 				<tr>
-					<td>X</td>
-					<td>X</td>
-					<td>X</td>
+					<td><p id="0-0"></p></td>
+					<td><p id="0-1"></p></td>
+					<td><p id="0-2"></p></td>
 				</tr>
 				<tr>
-					<td>X</td>
-					<td>X</td>
-					<td>X</td>
+					<td><p id="1-0"></p></td>
+					<td><p id="1-1"></p></td>
+					<td><p id="1-2"></p></td>
 				</tr>
 				<tr>
-					<td>X</td>
-					<td>X</td>
-					<td>X</td>
+					<td><p id="2-0"></p></td>
+					<td><p id="2-1"></p></td>
+					<td><p id="2-2"></p></td>
 				</tr>
 			</table>
 		</div>
 		<div class="col-md-6 input">
-			<button class="btn btn-success" onclick="#" type="submit">Random Punishment</button>
-			<form></form>
+			<h1>Input</h1>
+			<table class="table table-bordered" id="inputTable">
+				<tr>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[0])">Button</button></td>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[1])">Button</button></td>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[2])">Button</button></td>
+				</tr>
+				<tr>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[3])">Button</button></td>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[4])">Button</button></td>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[5])">Button</button></td>
+				</tr>
+				<tr>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[6])">Button</button></td>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[7])">Button</button></td>
+					<td><button class="btn btn-default" type="submit" onclick="runThrough(array[8])">Button</button></td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-6 final">
+			<section>
+				<p id="end-game"></p>
+			</section>
+			<section>
+				<button class="btn btn-default" type="submit" id="reset" onclick="res()">Reset</button>
+			</section>
 		</div>
 		</div>
 	</div>
