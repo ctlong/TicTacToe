@@ -1,0 +1,39 @@
+body {
+	background-color: gray;
+}
+
+#myTable {
+	width: 300px;
+	text-align: center;
+	margin-top: 10%;
+	margin-left: 20%;
+}
+
+.wrapper {
+	background-color: lightblue;
+	padding: 30px;
+	margin: 10px;
+	height: 1000px;
+}
+
+.main {
+	background-color: white;
+	height: 300px;
+	border-right: 1px solid black;
+}
+
+.input {
+	background-color: white;
+	height: 300px;
+}
+
+@media(max-width: 970px) {
+	.main {
+		border-right: 0px;
+		border-bottom: 1px solid black;
+	}
+
+	#myTable {
+		margin-top: 100px;
+	}
+}
