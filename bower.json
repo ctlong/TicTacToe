@@ -1,0 +1,22 @@
+{
+  "name": "TicTacToe",
+  "version": "0.0.0",
+  "description": "A website where you can play tic tac toe",
+  "main": "index.html",
+  "keywords": [
+    "projects",
+    "wdi",
+    "coding"
+  ],
+  "authors": [
+    "Carson Long"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
