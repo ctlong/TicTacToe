@@ -10,7 +10,7 @@ function addO(str) {
 
 function runThrough(str) {
 	if(checker()) {
-		document.getElementById("end-game").innerHTML = "Game Over";
+		document.getElementById("end-game").innerHTML = "Game Over: You Lose:(";
 	}
 	else {
 		if(document.getElementById(str).innerHTML == "O" || document.getElementById(str).innerHTML == "X") {
@@ -19,16 +19,21 @@ function runThrough(str) {
 		else {
 			addX(str);
 			if(checker()) {
-				document.getElementById("end-game").innerHTML = "Game Over";
+				document.getElementById("end-game").innerHTML = "Game Over: You Win!!";
 			}
 			else {
-				var x = Math.round(Math.random()*8);
-				var y = array[x];
-				while(document.getElementById(y).innerHTML == "O" || document.getElementById(y).innerHTML == "X") {
-					x = Math.round(Math.random()*8);
-					y = array[x];
+				if(array.every(function full(x) {x !== "";})) {
+					document.getElementById("end-game").innerHTML = "Game Over: Tie";
 				}
-				addO(y);
+				else {
+					var x = Math.round(Math.random()*8);
+					var y = array[x];
+					while(document.getElementById(y).innerHTML == "O" || document.getElementById(y).innerHTML == "X") {
+						x = Math.round(Math.random()*8);
+						y = array[x];
+					}
+					addO(y);
+				}
 			}
 		}
 	}
